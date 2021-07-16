@@ -1,10 +1,10 @@
 import List from '../../layout/List/List';
 import ListItem from '../../layout/ListItem/ListItem';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getAllArtists } from '../../../redux/subReducers/artistsSubReducer';
 
-import data from '../../../data/data';
-const artists = data.artists;
-
-const SongsList = () => (
+const ArtistsList = ({ artists }) => (
   <List>
     {artists.map((artist) => (
       <ListItem key={artist.id}>
@@ -16,4 +16,12 @@ const SongsList = () => (
   </List>
 );
 
-export default SongsList;
+ArtistsList.propTypes = {
+  artists: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  artists: getAllArtists(state),
+});
+
+export default connect(mapStateToProps)(ArtistsList);
