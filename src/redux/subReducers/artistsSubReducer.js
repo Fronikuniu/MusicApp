@@ -5,7 +5,12 @@ const createActionName = function (name) {
 const ADD_ARTIST = createActionName('ADD_ARTIST');
 
 //Selectors
-export const getAllArtists = (state) => [...state.artists];
+export const getAllArtists = (state) => {
+  return state.artists.map((artist) => ({
+    ...artist,
+    songsAmount: state.songs.filter((song) => song.author === artist.id).length,
+  }));
+};
 export const getArtistCount = (state) => state.artists.length;
 
 //Action creators

@@ -1,11 +1,11 @@
-import PageTitle from '../../layout/PageTitle/PageTitle'
-import ArtistsList from '../../features/ArtistsList/ArtistsList'
+import PageTitle from '../../layout/PageTitle/PageTitle';
+import ArtistsList from '../../features/ArtistsList/ArtistsList';
 
 const Artists = () => (
-    <section className="page">
-         <PageTitle>Songs</PageTitle>
-         <ArtistsList />
-    </section>
-)
+  <section className="page">
+    <PageTitle>Artists</PageTitle>
+    <ArtistsList />
+  </section>
+);
 
-export default Artists
+export default Artists;

@@ -10,7 +10,7 @@ const ArtistsList = ({ artists }) => (
       <ListItem key={artist.id}>
         <div>{artist.id}</div>
         <div className="font-semibold">{artist.name}</div>
-        <div>?? songs</div>
+        <div>{artist.songsAmount} songs</div>
       </ListItem>
     ))}
   </List>
