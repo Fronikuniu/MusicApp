@@ -12,6 +12,7 @@ export const getAllSongs = (state) => {
   }));
 };
 export const getSongCount = (state) => state.songs.length;
+export const getSongInfoById = (state, songId) => state.songs.find((song) => song.id === songId);
 
 //Action creators
 export const addSong = (payload) => ({ type: ADD_SONG, payload });
