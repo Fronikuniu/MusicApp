@@ -19,7 +19,7 @@ const Song = ({ song }) => {
 };
 
 Song.propTypes = {
-  songs: PropTypes.array.isRequired,
+  song: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
