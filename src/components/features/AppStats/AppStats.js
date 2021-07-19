@@ -9,7 +9,7 @@ const AppStats = ({ artistsLength, songsLength }) => (
 
     <div className="flex flex-wrap justify-center mt-10">
       <div className="font-bold mt-2 text-6xl mr-2 text-white bg-indigo-600 p-8 rounded-md shadow-md w-max">{artistsLength} Artists</div>
-      <div className="font-bold mt-2 text-6xl ml-2 text-white bg-indigo-600 p-8 rounded-md shadow-md w-max">{songsLength} Songs</div> {/* w-auto */}
+      <div className="font-bold mt-2 text-6xl ml-2 text-white bg-indigo-600 p-8 rounded-md shadow-md w-max">{songsLength} Songs</div>
     </div>
   </div>
 );

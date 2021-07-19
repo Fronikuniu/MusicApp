@@ -1,8 +1,8 @@
-import List from '../../layout/List/List';
-import ListItem from '../../layout/ListItem/ListItem';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllSongs } from '../../../redux/subReducers/songsSubReducer';
+import List from '../../layout/List/List';
+import ListItem from '../../layout/ListItem/ListItem';
 import PropTypes from 'prop-types';
 
 const SongsList = ({ songs }) => {

@@ -1,32 +1,57 @@
+import { connect } from 'react-redux';
+import { updateCurrentSong } from '../../../redux/subReducers/songsSubReducer';
+import { useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-const MusicPlayer = ({ title, id, filename, className = '', startAt = 0 }) => {
+const MusicPlayer = ({ id, title, filename, className = '', startAt = 0, updateCurrentSong }) => {
+  let player = null;
+  let currentTime = 0;
+
+  useEffect(() => {
+    return () => {
+      updateCurrentSong({
+        songId: id,
+        time: currentTime,
+        title: title,
+        filename: filename,
+      });
+      player.removeEventListener('timeupdate', updateCurrentTime);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const updateCurrentTime = () => {
+    currentTime = player.currentTime;
+  };
+
   const handlePlayer = (e) => {
-    console.log(e);
     if (e && e.audioEl) {
-      console.log(e.audioEl.current);
-      const player = e.audioEl.current;
+      player = e.audioEl.current;
+      player.addEventListener('timeupdate', updateCurrentTime);
       player.currentTime = startAt;
-      console.log(player.currentTime);
       player.play();
     }
   };
 
   return (
     <div className={clsx(className)}>
-      <h1 className="text-2xl font-semibold text-blue-400 mb-5">{` { ${id} } - ${title}`}</h1>
       <ReactAudioPlayer className="focus:outline-none" ref={handlePlayer} src={process.env.PUBLIC_URL + '/songs/' + filename} autoPlay controls />
     </div>
   );
 };
 
 MusicPlayer.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  filename: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  title: PropTypes.string,
+  filename: PropTypes.string,
   startAt: PropTypes.number,
+  updateCurrentSong: PropTypes.func.isRequired,
 };
 
-export default MusicPlayer;
+const mapDispatchToProps = (dispatch) => ({
+  updateCurrentSong: (data) => dispatch(updateCurrentSong(data)),
+});
+
+export default connect(null, mapDispatchToProps)(MusicPlayer);

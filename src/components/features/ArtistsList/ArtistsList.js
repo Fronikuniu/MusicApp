@@ -1,8 +1,8 @@
+import { connect } from 'react-redux';
+import { getAllArtists } from '../../../redux/subReducers/artistsSubReducer';
 import List from '../../layout/List/List';
 import ListItem from '../../layout/ListItem/ListItem';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getAllArtists } from '../../../redux/subReducers/artistsSubReducer';
 
 const ArtistsList = ({ artists }) => (
   <List>
