@@ -8,17 +8,19 @@ import PropTypes from 'prop-types';
 const MainPlayer = ({ currentSong }) => {
   const location = useLocation();
 
-  if (location.pathname.includes('play')) return null;
+  if (location.pathname.includes('play') || !currentSong.songId) return null;
   else
     return (
-      <div className="fixed w-full p-6 bottom-0 bg-gradient-to-r from-purple-300 via-purple-400 to-purple-600 rounded-md shadow-lg bt">
+      <div className="fixed w-full p-6 bottom-0 bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 rounded-md shadow-lg bt">
         <Container>
           <div className="flex justify-center items-center">
-            <div>
-              <h2 className="text-lg mr-6 text-white">Now playing:</h2>
-              <p className="text-lg font-semibold text-purple-600">{currentSong.title}</p>
+            <h2 className="text-lg text-white pr-5">Now playing:</h2>
+
+            <MusicPlayer title={currentSong.title} author={currentSong.author} id={currentSong.id} filename={currentSong.filename} startAt={currentSong.time} />
+            <div className="pl-5">
+              <p className="text-2xl font-semibold text-indigo-700 mb-1">{currentSong.title}</p>
+              <p className="text-xs font-semibold text-white">{currentSong.author}</p>
             </div>
-            <MusicPlayer title={currentSong.title} id={currentSong.id} filename={currentSong.filename} startAt={currentSong.time} />
           </div>
         </Container>
       </div>

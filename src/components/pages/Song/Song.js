@@ -13,8 +13,9 @@ const Song = ({ song }) => {
   return (
     <section className="page">
       <PageTitle>Song:</PageTitle>
-      <h1 className="text-2xl font-semibold text-blue-400 mb-5 mt-3">{` { ${song.id} } - ${song.title}`}</h1>
-      <MusicPlayer className="mt-6" title={song.title} id={song.id} filename={song.filename} />
+      <h1 className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-purple-900 mb-3">{song.title}</h1>
+      <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-blue-900">{song.author}</h2>
+      <MusicPlayer className="mt-6" id={song.id} author={song.author} title={song.title} filename={song.filename} />
     </section>
   );
 };

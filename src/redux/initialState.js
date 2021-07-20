@@ -28,9 +28,10 @@ const initialState = {
     ],
     currentSong: {
       songId: null,
-      time: 0,
+      author: null,
       title: null,
       filename: null,
+      time: 0,
     },
   },
   artists: [

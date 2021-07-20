@@ -12,7 +12,15 @@ export const getAllSongs = (state) => {
   }));
 };
 export const getSongCount = (state) => state.songs.data.length;
-export const getSongInfoById = (state, props) => state.songs.data.find((song) => song.id === parseInt(props.match.params.songId));
+export const getSongInfoById = (state, props) => {
+  let song = state.songs.data.find((song) => song.id === parseInt(props.match.params.songId));
+
+  if (song) {
+    song = JSON.parse(JSON.stringify(song));
+    song.author = state.artists.find((artist) => artist.id === song.author).name;
+  }
+  return song;
+};
 export const getCurrentSong = (state) => state.songs.currentSong;
 
 //Action creators

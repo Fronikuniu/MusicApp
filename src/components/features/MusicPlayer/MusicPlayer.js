@@ -5,7 +5,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-const MusicPlayer = ({ id, title, filename, className = '', startAt = 0, updateCurrentSong }) => {
+const MusicPlayer = ({ id, author, title, filename, className = '', startAt = 0, updateCurrentSong }) => {
   let player = null;
   let currentTime = 0;
 
@@ -13,9 +13,10 @@ const MusicPlayer = ({ id, title, filename, className = '', startAt = 0, updateC
     return () => {
       updateCurrentSong({
         songId: id,
-        time: currentTime,
+        author: author,
         title: title,
         filename: filename,
+        time: currentTime,
       });
       player.removeEventListener('timeupdate', updateCurrentTime);
     };
@@ -44,6 +45,7 @@ const MusicPlayer = ({ id, title, filename, className = '', startAt = 0, updateC
 
 MusicPlayer.propTypes = {
   id: PropTypes.number,
+  author: PropTypes.string,
   title: PropTypes.string,
   filename: PropTypes.string,
   startAt: PropTypes.number,
